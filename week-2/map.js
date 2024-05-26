@@ -5,6 +5,8 @@ const transform = (i) => {
 }
 
 
-let ans = input.map(transform);
+let ans = input.map(function xvz(i){
+    return 5*i;
+});
 console.log(ans);
 
