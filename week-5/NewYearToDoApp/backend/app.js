@@ -1,14 +1,22 @@
 const express = require("express");
 const app = express();
+const cors = require("cors")
 const { User,Todo } = require("./db/index");
 const PORT = 3005;
 
+//app.use(cors());   // this will allow http req from any frontend
+app.use(cors({
+    origin:"http://localhost:5173"   // ONLY THIS URL CAN SEND REQ TO BACKEND
+}))
 app.use(express.json());
 
 app.post("/signup",async (req,res)=>{
     const username = req.body.username;
     const password = req.body.password;
     
+    // use zod here
+
+
     const existingUsr = await User.findOne({
         username,
         password
@@ -35,6 +43,9 @@ app.post("/signin",async (req,res)=>{
     const username = req.body.username;
     const password = req.body.password;
     
+    // zod
+
+
     const existingUsr = await User.findOne({
         username,
         password
@@ -59,6 +70,8 @@ app.post("/addtodo",async (req,res)=>{
     const description = req.body.description;
     const completed = false;
 
+    // zod
+
     const newTodoObj = new Todo({
         title,
         description,
@@ -80,8 +93,8 @@ app.get("/todos",async (req,res)=>{
     });
 })
 
-app.post("/completed/:id",async (req,res)=>{
-    const id = req.params.id;
+app.put("/completed",async (req,res)=>{
+    const id = req.body.id;
     await Todo.updateOne({
         _id:id
     },{
