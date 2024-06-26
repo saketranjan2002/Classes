@@ -1,0 +1,2 @@
+const JWT_SECRET_KEY = "MYPERSONALSECRETKEY";
+module.exports = {JWT_SECRET_KEY};
