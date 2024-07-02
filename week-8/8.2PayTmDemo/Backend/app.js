@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require('body-parser')
+const indexRoute = require("./routes/index")
 const app = express();
 const PORT = 3000;
 const cors = require("cors");
@@ -22,10 +23,4 @@ app.listen(PORT,(req,res)=>{
 })
 
 
-// add jwt auth
-// implement signin, signup , update api endpoints
-// create bank schema
-
-
-// { LEARN : SOMETHING NEW }
-// Transaction in database
+// slide 6 done partially
