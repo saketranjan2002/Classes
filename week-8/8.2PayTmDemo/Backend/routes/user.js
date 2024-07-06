@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const { z } = require("zod")
 const {JWT_SECRET_KEY} = require("../config");
 const { authMiddleware } = require("../middleware");
+const Account = require("../models/Account");
 
 const signupUser = z.object({
     username : z.string().email(),
@@ -57,7 +58,14 @@ router.post("/signup",async (req,res)=>{
         // use bcrypt 
         // salt : (impurity added in the password and then hashed so that the hash is different even when the password is same)
         
+
+        
         const userID = registeredUser._id;
+        
+        const registerAccount = await Account.create({
+            userID,
+            balance : 1 + Math.random()*10000
+        })
         
         const token = jwt.sign({
             userID
