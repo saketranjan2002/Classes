@@ -6,6 +6,7 @@
 // ts is a syntactical lang 
 // browser understands only js 
 // ts gets converted into js
+
 const x = 1;
 console.log(x);
 function hello(str) {

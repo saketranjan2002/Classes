@@ -46,3 +46,41 @@ function wrapperFunc(func : (num : number) => void ){
 wrapperFunc((num : number=1)=>{
     console.log(num);
 });
+
+
+interface User{
+    firstName : string,
+    email? : string,         // ? implies email is optional
+    age : number
+}
+
+
+function isLegal(user : User) : boolean {
+    if(user.age > 18){
+        return true;
+    }return false;
+}
+
+// implementing an interface
+
+interface Person{
+    name: string;
+    age: number;
+    greet(phrase: string): void;
+}
+
+class Employee implements Person{
+    name: string;
+    age: number;
+
+    constructor(n:string,a:number){           // -> need this constructor to assign the name and age (variables)
+        this.name = n;
+        this.age = a;
+    }
+
+    greet(phrase: string): void {
+        console.log(`${phrase} ${name}`);
+        
+    }
+
+}
