@@ -1,3 +1,3 @@
 // const express = require("express");
 
-import express from "express" //Better
+import express from "express" //Better es6
