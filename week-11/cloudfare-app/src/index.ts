@@ -11,8 +11,38 @@
  * Learn more at https://developers.cloudflare.com/workers/
  */
 
+
+
 export default {
+//  fetch is an asyn func hence it is not returning Response but it is returning Promise<Response>
 	async fetch(request, env, ctx): Promise<Response> {
-		return new Response('Hello World!');
+		return Response.json({
+			message : "you did'nt send a get request"
+		});
 	},
 } satisfies ExportedHandler<Env>;
+
+
+
+// Routing can be done as below
+
+/*
+
+export default {
+	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+		console.log(request.body);
+		console.log(request.headers);
+		
+		if (request.method === "GET") {
+			return Response.json({
+				message: "you sent a get request"
+			});
+		} else {
+			return Response.json({
+				message: "you did not send a get request"
+			});
+		}
+	},
+};
+
+*/
